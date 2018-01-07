@@ -330,6 +330,12 @@ nav {
     .scrolling-nav ul li .last-item::after {
       background: black; }
 
+@media (max-width: 440px) {
+  .scrolling-nav {
+    opacity: 1; }
+    .scrolling-nav .logo {
+      display: none; } }
+
 .button {
   padding: 10px 20px;
   text-decoration: none;
