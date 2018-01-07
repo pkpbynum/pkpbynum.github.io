@@ -13,10 +13,10 @@ function resizeiframe() {//Resize iframes for YouTube embeds
 
 $(window).scroll(function() {
   let vScroll = $(window).scrollTop();
-  if ((vScroll >= ($(window).height() - 50)) && !scrollingNav) {
+  if ((vScroll >= ($(window).height() - $('nav').height())) && !scrollingNav) {
     scrollingNavInit();
     scrollingNav = true;
-  } if ((vScroll <= ($(window).height() - 50)) && scrollingNav) {
+  } if ((vScroll <= ($(window).height() - $('nav').height())) && scrollingNav) {
     scrollingNavInit();
     scrollingNav = false;
     }

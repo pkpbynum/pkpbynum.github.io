@@ -244,6 +244,14 @@ nav {
   height: 50px;
   background: transparent;
   transition: all 300ms ease-in-out; }
+  nav .logo {
+    position: absolute;
+    left: 0;
+    margin-left: 5px;
+    height: 40px;
+    width: 40px;
+    display: none;
+    background-image: url(/assets/img/site-logo.svg); }
   nav ul {
     display: -ms-flexbox;
     display: flex;
@@ -309,6 +317,8 @@ nav {
   border-bottom: 1px solid #DBDBDB; }
   .scrolling-nav:hover {
     opacity: 1; }
+  .scrolling-nav .logo {
+    display: block; }
   .scrolling-nav ul {
     opacity: 1; }
     .scrolling-nav ul:hover {
@@ -320,19 +330,19 @@ nav {
     .scrolling-nav ul li .last-item::after {
       background: black; }
 
-.home-header {
-  background-image: url(../img/home-hero.jpeg);
-  background-size: cover; }
-
-.see-music-btn {
+.button {
   padding: 10px 20px;
   text-decoration: none;
   font-size: 18px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: box-shadow .2s ease; }
-  .see-music-btn:hover {
+  .button:hover {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
     color: #808080; }
+
+.home-header {
+  background-image: url(../img/home-hero.jpeg);
+  background-size: cover; }
 
 @media (max-width: 440px) {
   .see-music-btn {
@@ -351,3 +361,27 @@ iframe {
 @media (max-width: 440px) {
   iframe {
     margin-bottom: 40px; } }
+
+.under-construction {
+  height: 100vh;
+  width: 100vw;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+  font-family: "Lato", sans-serif;
+  color: #DBDBDB;
+  font-size: 18px; }
+  .under-construction svg {
+    fill: #808080;
+    text-shadow: 5px 10px;
+    width: 220px;
+    height: 180px;
+    padding: 0; }
+  .under-construction .under-construction-div {
+    color: #808080;
+    margin: 20px 0 40px 0; }
