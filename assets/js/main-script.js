@@ -1,51 +1,46 @@
-let scrollingNav = false;
-
 $(document).ready(function() { //Document Ready function
 
-$(window).resize(function() { //Window Resize function
-  resizeiframe();
+//---------------- Navbar
+var angle = 0;
+var openSection = false;
+$(".navbar-toggle").click(function() { //executes navbar visual transitions
+  angle -= 90;
+  $(this).css("transform", "rotate(" + angle + "deg)");
+  $(this).children().toggleClass("toggle-active");
+  $("#homeBackdrop-container").toggleClass("page-blur");
+  $("ul").toggleClass("nav-hidden");
+  deactivateAllSections();
 });
 
-function resizeiframe() {//Resize iframes for YouTube embeds
-  let iframeWidth = $('iframe').width();
-  $('iframe').css('height', iframeWidth/1.6);
-}
+  function deactivateAllSections() { //deactivateAllSections
+    $("section").removeClass("section-active");
+    $("#homeBackdrop-container").removeClass("img-shift-left");
+  };
 
-$(window).scroll(function() {
-  let vScroll = $(window).scrollTop();
-  if ((vScroll >= ($(window).height() - $('nav').height())) && !scrollingNav) {
-    scrollingNavInit();
-    scrollingNav = true;
-  } if ((vScroll <= ($(window).height() - $('nav').height())) && scrollingNav) {
-    scrollingNavInit();
-    scrollingNav = false;
+  function activateSection(tSection) { //activateSection
+    $("#homeBackdrop-container").addClass("img-shift-left");
+    if (openSection) {
+      setTimeout(function() {
+        $(tSection).addClass("section-active");
+      }, 200);
+    } else {
+      $(tSection).addClass("section-active");
     }
-});
+  };
 
-function scrollingNavInit() {//attaches styling classes for scrolling nav
-  $('nav').toggleClass('scrolling-nav');
-}
+  $(".nav-link").click(function() { //navbar click management
+    openSection = $("#bio").hasClass("section-active") ||
+      $("#recordings").hasClass("section-active") ||
+      $("#photos").hasClass("section-active");
+    var target = "#" + $(this).attr("data-page-target");
+    deactivateAllSections();
+    activateSection(target);
+  });
 
-$(".animsition").animsition({//animsition
-   inClass: 'fade-in',
-   outClass: 'fade-out-left',
-   inDuration: 1500,
-   outDuration: 800,
-   linkElement: '.animsition-link',
-   // e.g. linkElement: 'a:not([target="_blank"]):not([href^="#"])'
-   loading: true,
-   loadingParentElement: 'body', //animsition wrapper element
-   loadingClass: 'animsition-loading',
-   loadingInner: '', // e.g '<img src="loading.svg" />'
-   timeout: false,
-   timeoutCountdown: 5000,
-   onLoadEvent: true,
-   browser: [ 'animation-duration', '-webkit-animation-duration'],
-   // "browser" option allows you to disable the "animsition" in case the css property in the array is not supported by your browser.
-   // The default setting is to disable the "animsition" in a browser that does not support "animation-duration".
-   overlay : false,
-   overlayClass : 'animsition-overlay-slide',
-   overlayParentElement : 'body',
-   transition: function(url){ window.location.href = url; }
- });
+  function resizeiframe() { //Resize iframes for YouTube embeds
+    let iframeWidth = $('iframe').width();
+    $('iframe').css('height', iframeWidth / 1.6);
+  };
+
+
 });
